@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Comment" representedClassName="Comment" syncable="YES">
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="comments" inverseEntity="Person" syncable="YES"/>
+        <relationship name="shoe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sneaker" inverseName="comments" inverseEntity="Sneaker" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="Person" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="profilePicture" attributeType="Binary" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="owner" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="friends" inverseEntity="Person" syncable="YES"/>
+        <relationship name="sneakers" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Sneaker" inverseName="owner" inverseEntity="Sneaker" syncable="YES"/>
+    </entity>
+    <entity name="Sneaker" representedClassName="Sneaker" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="comments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Comment" inverseName="shoe" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="owner" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="sneakers" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Person" positionX="286" positionY="-55" width="128" height="118"/>
+        <element name="Sneaker" positionX="-225" positionY="-40" width="128" height="103"/>
+        <element name="Comment" positionX="-20" positionY="-225" width="128" height="103"/>
+    </elements>
+</model>
